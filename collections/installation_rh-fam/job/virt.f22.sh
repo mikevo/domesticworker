@@ -4,5 +4,5 @@
 # job: this
 # finalize: none
 #
-dnf groupinstall "Virtualization"
-dnf install qemu-img  libvirt libvirt-python libvirt-client virt-manager
+dnf groupinstall "Virtualization" -y
+dnf install qemu-img  libvirt libvirt-python libvirt-client virt-manager -y

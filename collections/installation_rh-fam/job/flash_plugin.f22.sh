@@ -4,4 +4,4 @@
 # job: this
 # finalize: none
 #
-dnf install flash-plugin nspluginwrapper alsa-plugins-pulseaudio libcurl
+dnf install flash-plugin nspluginwrapper alsa-plugins-pulseaudio libcurl -y
