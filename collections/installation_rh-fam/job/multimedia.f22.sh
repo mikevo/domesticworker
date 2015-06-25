@@ -4,4 +4,4 @@
 # job: this
 # finalize: none
 #
-dnf install rsync -y
+dnf install gimp inkscape scribus ImageMagick qpdf -y

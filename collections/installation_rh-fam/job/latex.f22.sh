@@ -4,4 +4,4 @@
 # job: this
 # finalize: none
 #
-dnf install texlive-scheme-medium texlive-collection-xetex jabref latexila -y
+dnf install texlive-scheme-medium texlive-collection-xetex jabref gnumeric latexila -y

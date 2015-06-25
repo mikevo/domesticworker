@@ -4,4 +4,4 @@
 # job: this
 # finalize: none
 #
-dnf install wavemon -y
+dnf install docker -y
