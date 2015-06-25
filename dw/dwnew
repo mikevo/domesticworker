@@ -1,0 +1,30 @@
+#!/bin/sh -e
+# dwnew - this script is used to setup a new collection
+
+if test "${DW_PATH+set}" != set ; then
+	DW_PATH='/opt/dw'
+fi
+
+if [ -z ${1+x} ]; then
+	echo "usage: $0 <collection>"
+	echo "example: $0 new-collection/"
+	exit 1
+fi
+
+COLLECTION=$DW_PATH/$1
+
+if [ -d "$COLLECTION" ]; then
+  echo "Collection $1 already exists"
+	exit 1
+fi
+echo "Create collection $1"
+echo -n " - create prepare folder... "
+mkdir -p "$COLLECTION/prepare" && echo "done"
+
+echo -n " - create job folder... "
+mkdir -p "$COLLECTION/job" && echo "done"
+
+echo -n " - create finzlize folder... "
+mkdir -p "$COLLECTION/finalize" && echo "done"
+
+echo -e "\r\nCopy scripts to the folders and run the collection with\r\ndwrun $1"

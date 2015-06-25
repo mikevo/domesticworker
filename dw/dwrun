@@ -1,0 +1,70 @@
+#!/bin/sh -e
+# dwrun - this script is used to execute the script collections
+
+if [[ $EUID -ne 0 ]]; then
+	echo "This script should be run as root!"
+
+	read -p "Run without root privileges? [y/N] " yn
+	case $yn in
+	    [Yy]* ) break;;
+	    * ) exit 1;;
+	esac
+fi
+
+if test "${DW_PATH+set}" != set ; then
+	DW_PATH='/opt/dw'
+fi
+
+if [ -z ${1+x} ]; then
+	echo "usage: $0 <collection>"
+	echo "example: $0 example-collection/"
+	exit 1
+fi
+
+COLLECTION=$DW_PATH/$1
+
+if [ ! -d "$COLLECTION" ]; then
+  echo "Collection $1 doesn't exist"
+	exit 1
+fi
+
+echo "Running collection $1"
+
+if [ -d "$COLLECTION/prepare" ]; then
+  echo -e "\r\nPrepare scripts running..."
+
+	for script in $COLLECTION/prepare/*; do
+		if [ -x $script ]; then
+			echo -e "prepare/$(basename $script)"
+			$script
+		fi
+	done
+
+	echo "Preparing done!"
+fi
+
+if [ -d "$COLLECTION/job" ]; then
+  echo -e "\r\nJob scripts running..."
+
+	for script in $COLLECTION/job/*; do
+		if [ -x $script ]; then
+			echo -e "job/$(basename $script)"
+			$script
+		fi
+	done
+
+	echo "Jobs done!"
+fi
+
+if [ -d "$COLLECTION/finalize" ]; then
+  echo -e "\r\nFinalize scripts running..."
+
+	for script in $COLLECTION/finalize/*; do
+		if [ -x $script ]; then
+			echo -e "finalize/$(basename $script)"
+			$script
+		fi
+	done
+
+	echo "Finalizing done!"
+fi
