@@ -4,4 +4,5 @@
 # job: this
 # finalize: none
 #
-dnf install https://atom.io/download/rpm -y
+wget https://atom.io/download/rpm -O /tmp/atom.x86_64.rpm
+dnf install /tmp/atom.x86_64.rpm -y
