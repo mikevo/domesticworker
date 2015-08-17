@@ -4,4 +4,4 @@
 # job: this
 # finalize: none
 #
-dnf install git gitg -y
+dnf install git gitg gitflow -y
