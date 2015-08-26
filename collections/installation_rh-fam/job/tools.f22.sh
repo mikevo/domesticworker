@@ -4,4 +4,5 @@
 # job: this
 # finalize: none
 #
-dnf install cdiff htmldoc meld octave rsync pandoc pxz unison240 wavemon wireshark wireshark-gnome -y
+dnf install htmldoc meld octave rsync pandoc pxz unison240 wavemon wireshark wireshark-gnome -y
+pip install --upgrade cdiff
